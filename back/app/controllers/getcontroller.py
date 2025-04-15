@@ -60,3 +60,19 @@ def get_nb_core_per_wand():
           return jsonify(results), 200
      else:
           return jsonify({'error': "calcul impossible"}), 404
+
+def get_nb_characters_in_movies() : 
+     results = list(mongo.characters.aggregate([
+        {
+        "$group" : {
+            "_id" : {"in movie ?" : {"$ne" : ["$actor", ""]}},
+            "count" : {"$sum" : 1}
+        }
+    }  
+     ]))
+     if results:
+          return jsonify(results), 200
+     else:
+          return jsonify({'error': "calcul impossible"}), 404
+
+     
