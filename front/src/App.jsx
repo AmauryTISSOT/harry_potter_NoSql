@@ -1,11 +1,11 @@
 import "./App.css";
+import FakeChart from "./components/fakeChart/fakeChart";
 import Header from "./components/Header.jsx/Header";
 
 function App() {
     return (
         <>
             <Header />
-            <h1>Hello world</h1>
         </>
     );
 }
