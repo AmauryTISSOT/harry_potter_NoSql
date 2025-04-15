@@ -3,7 +3,7 @@
 Pour que l'API fonctionne, il faut installer Flask et PyMongo à l'aide de la commande suivante :
 
 ```shell
-pip install flask pymongo
+pip install flask pymongo flask-cors
 ```
 
 # Paramètres de connexion à la base de données
