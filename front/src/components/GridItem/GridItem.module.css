@@ -1,0 +1,8 @@
+.GridItemContainer {
+    background-color: var(--main-dark);
+    border-radius: 1em;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
