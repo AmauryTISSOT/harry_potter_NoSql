@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from . import mongo
-from .controllers.getcontroller import (get_character_by_id)
+from .controllers.getcontroller import (get_character_by_id, get_nb_student_per_house,get_nb_characters_per_species)
 
 main = Blueprint('main', __name__)
 
@@ -16,3 +16,10 @@ def get_characters():
 @main.route('/characters/<character_id>', methods=["GET"])
 def route_get_character_by_id(character_id):
     return get_character_by_id(character_id)
+
+@main.route('/studentperhouse', methods=['GET'])
+def route_get_nb_student_per_house():
+    return get_nb_student_per_house()
+@main.route('/charactersperspecies', methods=['GET'])
+def route_get_nb_characters_per_species():
+    return get_nb_characters_per_species()
