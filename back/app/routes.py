@@ -1,7 +1,6 @@
 from flask import Blueprint, request, jsonify
 from . import mongo
-from bson.objectid import ObjectId
-from bson.errors import InvalidId
+from .controllers.getcontroller import (get_character_by_id)
 
 main = Blueprint('main', __name__)
 
@@ -15,10 +14,5 @@ def get_characters():
     return jsonify(characters)
 
 @main.route('/characters/<character_id>', methods=["GET"])
-def get_character_by_id(character_id):
-        character = mongo.characters.find_one({"_id": ObjectId(character_id)})
-        if character:
-            character["_id"] = str(character["_id"])
-            return jsonify(character), 200
-        else:
-            return jsonify({"error": "Personnage non trouvé"}), 404
+def route_get_character_by_id(character_id):
+    return get_character_by_id(character_id)
