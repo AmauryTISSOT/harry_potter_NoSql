@@ -8,9 +8,11 @@ def create_app():
     app = Flask(__name__)
 
     # Indiquer ci-dessous les paramètres de connexion à votre base de données mongoDB
-    mongo = MongoClient("mongodb://localhost:27017/").get_database("harry_potter")
+    mongo_uri = "mongodb+srv://juliette:minuit@clusterdb.yb1ipo0.mongodb.net/?retryWrites=true&w=majority&appName=ClusterDB"
+    client = MongoClient(mongo_uri)
+    mongo = client.get_database("harry_potter")
     
-    print("MongoDB connected !")
+    print("MongoDB Atlas connecté !")
 
     from .routes import main
     app.register_blueprint(main)
