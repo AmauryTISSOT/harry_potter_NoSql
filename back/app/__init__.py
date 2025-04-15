@@ -8,7 +8,7 @@ def create_app():
     app = Flask(__name__)
 
     # Indiquer ci-dessous les paramètres de connexion à votre base de données mongoDB
-    mongo = MongoClient('localhost', 27017, username="admin", password="secret").get_database('harry_potter')
+    mongo = MongoClient("mongodb://localhost:27017/").get_database("harry_potter")
     
     print("MongoDB connected !")
 
