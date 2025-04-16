@@ -46,7 +46,7 @@ const StaffOrStudent = () => {
                 flexDirection: "column",
             }}
         >
-            <h3>Répartion des personnages dans l'école Poudlard</h3>
+            <h3>Répartition des personnages dans l'école Poudlard</h3>
             <ResponsiveContainer width="100%" height={400}>
                 <BarChart
                     data={data}
