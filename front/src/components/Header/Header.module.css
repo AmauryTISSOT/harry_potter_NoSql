@@ -6,3 +6,11 @@
     padding: 0 20px;
     background-color: var(--main-dark);
 }
+
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2em;
+    font-weight: 500;
+}
