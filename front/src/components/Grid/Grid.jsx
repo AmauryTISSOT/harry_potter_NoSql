@@ -16,6 +16,7 @@ import NumberOfPatronus from "../DataVisualization/NumberOfPatronus";
 import WandSize from "../DataVisualization/WandSize";
 import WandSizePerGender from "../DataVisualization/WandSizePerGender";
 import WandSizePerHouse from "../DataVisualization/WandSizePerHouse";
+import DeathByGender from "../DataVisualization/DeathByGender";
 
 export const Grid = () => {
     return (
@@ -64,6 +65,9 @@ export const Grid = () => {
             </div>
             <div style={{ gridColumnStart: 1, gridColumnEnd: 5 }}>
                 <GridItem item={<WandSizePerHouse />} />
+            </div>
+            <div style={{ gridColumnStart: 1, gridColumnEnd: 3 }}>
+                <GridItem item={<DeathByGender />} />
             </div>
         </div>
     );
