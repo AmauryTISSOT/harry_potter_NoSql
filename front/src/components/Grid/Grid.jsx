@@ -12,6 +12,7 @@ import GenderPerHouse from "../DataVisualization/GenderPerHouse";
 import AncestryInHogwards from "../DataVisualization/AncestryInHogwards";
 import AncestryInEachHouse from "../DataVisualization/AncestryInEachHouse";
 import AliveOrDead from "../DataVisualization/AliveOrDead";
+import NumberOfPatronus from "../DataVisualization/NumberOfPatronus";
 
 export const Grid = () => {
     return (
@@ -48,6 +49,9 @@ export const Grid = () => {
             </div>
             <div style={{ gridColumnStart: 1, gridColumnEnd: 5 }}>
                 <GridItem item={<AncestryInEachHouse />} />
+            </div>
+            <div style={{ gridColumnStart: 1, gridColumnEnd: 5 }}>
+                <GridItem item={<NumberOfPatronus />} />
             </div>
         </div>
     );
