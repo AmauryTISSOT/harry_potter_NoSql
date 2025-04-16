@@ -1,16 +1,30 @@
 import React from "react";
 import styles from "./Grid.module.css";
 import GridItem from "../GridItem/GridItem";
-import FakeChart from "../fakeChart/fakeChart";
 import StudentPerHouse from "../DataVisualization/StudentPerHouse";
 import CharactersPerSpecies from "../DataVisualization/CharactersPerSpecies";
+import WoodPerHand from "../DataVisualization/WoodPerHand";
+import CorePerHand from "../DataVisualization/CorePerHand";
+import FakeChart from "../FakeChart/FakeChart";
 
 export const Grid = () => {
     return (
         <div className={styles.grid}>
-            <GridItem gridArea={"box-1"} item={<StudentPerHouse />} />
-            <GridItem gridArea={"box-2"} item={<FakeChart />} />
-            <GridItem gridArea={"box-3"} item={<CharactersPerSpecies />} />
+            <div style={{ gridColumnStart: 1, gridColumnEnd: 3 }}>
+                <GridItem item={<StudentPerHouse />} />
+            </div>
+            <div style={{ gridColumnStart: 3, gridColumnEnd: 5 }}>
+                <GridItem item={<WoodPerHand />} />
+            </div>
+            <div style={{ gridColumnStart: 1, gridColumnEnd: 5 }}>
+                <GridItem item={<CharactersPerSpecies />} />
+            </div>
+            <div style={{ gridColumnStart: 1, gridColumnEnd: 3 }}>
+                <GridItem item={<CorePerHand />} />
+            </div>
+            <div style={{ gridColumnStart: 3, gridColumnEnd: 5 }}>
+                <GridItem item={<FakeChart />} />
+            </div>
         </div>
     );
 };

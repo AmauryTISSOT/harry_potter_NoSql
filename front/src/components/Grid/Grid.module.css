@@ -1,11 +1,12 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     max-width: 100%;
     gap: 1em;
     padding: 1em;
-    grid-template-areas:
+    /* grid-template-areas:
         "box-1 box-1 box-2 box-2"
-        "box-3 box-3 box-3 box-3";
+        "box-3 box-3 box-3 box-3"
+        "box-4 box-4 box-5 box-5"; */
 }
