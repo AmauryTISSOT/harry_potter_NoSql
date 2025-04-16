@@ -23,7 +23,7 @@ const CharacterGrid = () => {
     return (
         <>
             {characters.length > 0 ? (
-                <div className={styles.charGrid}>
+                <div className={styles.grid}>
                     {characters.map((character, id) => (
                         <div key={id} className={styles.card}>
                             <CharacterTile character={character} />
