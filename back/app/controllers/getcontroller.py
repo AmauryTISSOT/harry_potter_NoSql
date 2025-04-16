@@ -277,3 +277,56 @@ def get_avg_wand_size_per_house():
           return jsonify(results), 200
      else:
           return jsonify({'error': "calcul impossible"}), 404
+     
+
+def get_muggle_vs_wizard() : 
+     results = list(mongo.characters.aggregate([
+           {
+        "$project": {
+            "state": {
+                "$switch": {
+                    "branches": [
+                        {"case": {"$eq": ["$wizard", True]}, "then": "Wizard"},
+                        {"case": {"$eq": ["$wizard", False]}, "then": "Muggle"}
+                    ],
+                    "default": "Unknown"
+                }
+            }
+        }
+    },
+    {"$group" : {"_id" : {"state" : "$state"}, "number" : {"$sum" : 1}}}
+     ]))
+     if results:
+          return jsonify(results), 200
+     else:
+          return jsonify({'error': "calcul impossible"}), 404
+     
+
+def get_death_by_gender():
+     results = list(mongo.characters.aggregate([
+         {"$match" : { "$and" : [
+               {"alive" : {"$ne" : ""}},
+               {"gender" : {"$ne" : ""}}
+          ]}},
+    {
+        "$project": {
+            "state": {
+                "$switch": {
+                    "branches": [
+                        {"case": {"$eq": ["$alive", True]}, "then": "Alive"},
+                        {"case": {"$eq": ["$alive", False]}, "then": "Dead"}
+                    ],
+                    "default": "Unknown"
+                }
+            },
+            "gender" : 1
+
+        }
+    },
+    {"$group" : {"_id" : {"state" : "$state", "gender" : "$gender"}, "number" : {"$sum" : 1}}} 
+     ]))
+     if results:
+          return jsonify(results), 200
+     else:
+          return jsonify({'error': "calcul impossible"}), 404
+     
