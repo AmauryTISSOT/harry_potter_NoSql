@@ -8,6 +8,7 @@ import CorePerHand from "../DataVisualization/CorePerHand";
 import ActorOrNot from "../DataVisualization/ActorOrNot";
 import StaffOrStudent from "../DataVisualization/StaffOrStudent";
 import GenderInHogwards from "../DataVisualization/GenderInHogwards";
+import GenderPerHouse from "../DataVisualization/GenderPerHouse";
 
 export const Grid = () => {
     return (
@@ -32,6 +33,9 @@ export const Grid = () => {
             </div>
             <div style={{ gridColumnStart: 3, gridColumnEnd: 5 }}>
                 <GridItem item={<GenderInHogwards />} />
+            </div>
+            <div style={{ gridColumnStart: 1, gridColumnEnd: 5 }}>
+                <GridItem item={<GenderPerHouse />} />
             </div>
         </div>
     );
