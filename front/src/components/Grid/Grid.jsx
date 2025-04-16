@@ -6,6 +6,7 @@ import CharactersPerSpecies from "../DataVisualization/CharactersPerSpecies";
 import WoodPerHand from "../DataVisualization/WoodPerHand";
 import CorePerHand from "../DataVisualization/CorePerHand";
 import ActorOrNot from "../DataVisualization/ActorOrNot";
+import StaffOrStudent from "../DataVisualization/StaffOrStudent";
 
 export const Grid = () => {
     return (
@@ -24,6 +25,9 @@ export const Grid = () => {
             </div>
             <div style={{ gridColumnStart: 3, gridColumnEnd: 5 }}>
                 <GridItem item={<ActorOrNot />} />
+            </div>
+            <div style={{ gridColumnStart: 1, gridColumnEnd: 3 }}>
+                <GridItem item={<StaffOrStudent />} />
             </div>
         </div>
     );
