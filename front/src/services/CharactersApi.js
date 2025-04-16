@@ -52,6 +52,12 @@ const CharactersApi = {
     wandsizeperhouse: async () => {
         return await axios.get(`${API_BASE_URL}/wandsizeperhouse`);
     },
+    deathbygender: async () => {
+        return await axios.get(`${API_BASE_URL}/deathbygender`);
+    },
+    wizardvsmuggle: async () => {
+        return await axios.get(`${API_BASE_URL}/wizardvsmuggle`);
+    },
 };
 
 export default CharactersApi;
