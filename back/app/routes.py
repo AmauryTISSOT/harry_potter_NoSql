@@ -1,4 +1,6 @@
 from flask import Blueprint, request, jsonify
+
+from .controllers.spellController import create_spell, delete_spell, update_spell
 from . import mongo
 from .controllers.getcontroller import (get_character_by_id, get_nb_student_per_house,get_nb_characters_per_species,get_nb_wood_per_wand,get_nb_core_per_wand,get_nb_characters_in_movies, get_student_staff_or_nohogwarts, get_gender_in_hogwarts, get_gender_per_house, get_ancestry_in_hogwarts,get_ancestry_in_each_house, get_alive_or_dead)
 from .controllers.characterController import (update_character, create_character, delete_character)
@@ -91,6 +93,7 @@ def route_get_avg_wand_size_per_house():
     return get_avg_wand_size_per_house()
 
 
+
 @main.route('/wizardvsmuggle', methods=['GET'])
 def route_get_muggle_vs_wizard():
     return get_muggle_vs_wizard()
@@ -98,3 +101,16 @@ def route_get_muggle_vs_wizard():
 @main.route('/deathbygender', methods=['GET'])
 def route_get_death_by_gender():
     return get_death_by_gender()
+
+@main.route('/spells', methods=['POST'])
+def route_create_spell():
+    return create_spell()
+
+@main.route('/spells/<spell_id>', methods=['PUT'])
+def route_update_spell(spell_id):
+    return update_spell(spell_id)
+
+@main.route('/spells/<spell_id>', methods=['DELETE'])
+def route_delete_spell(spell_id):
+    return delete_spell(spell_id)
+
