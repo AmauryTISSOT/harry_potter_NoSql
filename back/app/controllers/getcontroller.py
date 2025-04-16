@@ -176,4 +176,32 @@ def get_ancestry_in_each_house() :
           return jsonify(results), 200
      else:
           return jsonify({'error': "calcul impossible"}), 404
-     
+
+
+def get_alive_or_dead() : 
+     results = list(mongo.characters.aggregate([
+          {
+               "$project" : {
+                    "state" : {
+                         "$switch" : {
+                              "branches" : [
+                                   {"case" : {"$eq" : ["$alive", True]}, "then" : "Alive"},
+                                   {"case" : {"$eq" : ["$alive", False]}, "then" : "Dead"}
+                              ],
+                              "default" : "Unknown"
+                         }
+                    }
+               }
+          },
+          {
+               "$group" : {
+                    "_id" : "$state",
+                    "count" : {"$sum": 1}
+               }
+          }
+
+     ]))
+     if results:
+          return jsonify(results), 200
+     else:
+          return jsonify({'error': "calcul impossible"}), 404
