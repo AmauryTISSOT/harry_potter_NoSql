@@ -1,13 +1,21 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import FakeChart from "./components/fakeChart/fakeChart";
-import { Grid } from "./components/Grid/Grid";
-import Header from "./components/Header/Header";
+import Layout from "./layout/Layout.jsx";
+import Home from "./pages/Home/Home";
+import ShowAllCharacters from "./pages/ShowAllCharacters/ShowAllCharacters.jsx";
 
 function App() {
     return (
         <>
-            <Header />
-            <Grid />
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route
+                        path="/showAllCharacters"
+                        element={<ShowAllCharacters />}
+                    />
+                </Route>
+            </Routes>
         </>
     );
 }
