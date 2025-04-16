@@ -40,6 +40,18 @@ const CharactersApi = {
     aliveordead: async () => {
         return await axios.get(`${API_BASE_URL}/aliveordead`);
     },
+    nbofpatronus: async () => {
+        return await axios.get(`${API_BASE_URL}/nbofpatronus`);
+    },
+    wandsize: async () => {
+        return await axios.get(`${API_BASE_URL}/wandsize`);
+    },
+    wandsizepergender: async () => {
+        return await axios.get(`${API_BASE_URL}/wandsizepergender`);
+    },
+    wandsizeperhouse: async () => {
+        return await axios.get(`${API_BASE_URL}/wandsizeperhouse`);
+    },
 };
 
 export default CharactersApi;
