@@ -40,10 +40,10 @@ const StudentPerHouse = () => {
                 flexDirection: "column",
             }}
         >
-            <h4 style={{ textAlign: "center" }}>
+            <h3 style={{ textAlign: "center" }}>
                 Répartition des élèves par maisons
-            </h4>
-            <ResponsiveContainer width={400} height={400}>
+            </h3>
+            <ResponsiveContainer width="100%" height={400}>
                 <PieChart>
                     <Pie
                         data={data}

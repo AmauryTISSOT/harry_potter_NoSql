@@ -63,7 +63,7 @@ const CharactersPerSpecies = () => {
     return (
         <div>
             <div>
-                <h2>Répartition des personnages par espèces</h2>
+                <h3>Répartition des personnages par espèces</h3>
                 <ResponsiveContainer width={1200} height={400}>
                     <BarChart data={data.sort((a, b) => b.nb - a.nb)}>
                         <XAxis
