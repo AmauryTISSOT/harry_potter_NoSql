@@ -9,6 +9,9 @@ import ActorOrNot from "../DataVisualization/ActorOrNot";
 import StaffOrStudent from "../DataVisualization/StaffOrStudent";
 import GenderInHogwards from "../DataVisualization/GenderInHogwards";
 import GenderPerHouse from "../DataVisualization/GenderPerHouse";
+import AncestryInHogwards from "../DataVisualization/AncestryInHogwards";
+import AncestryInEachHouse from "../DataVisualization/AncestryInEachHouse";
+import AliveOrDead from "../DataVisualization/AliveOrDead";
 
 export const Grid = () => {
     return (
@@ -36,6 +39,15 @@ export const Grid = () => {
             </div>
             <div style={{ gridColumnStart: 1, gridColumnEnd: 5 }}>
                 <GridItem item={<GenderPerHouse />} />
+            </div>
+            <div style={{ gridColumnStart: 1, gridColumnEnd: 3 }}>
+                <GridItem item={<AncestryInHogwards />} />
+            </div>
+            <div style={{ gridColumnStart: 3, gridColumnEnd: 5 }}>
+                <GridItem item={<AliveOrDead />} />
+            </div>
+            <div style={{ gridColumnStart: 1, gridColumnEnd: 5 }}>
+                <GridItem item={<AncestryInEachHouse />} />
             </div>
         </div>
     );
