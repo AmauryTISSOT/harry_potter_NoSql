@@ -74,5 +74,33 @@ def get_nb_characters_in_movies() :
           return jsonify(results), 200
      else:
           return jsonify({'error': "calcul impossible"}), 404
+     
+
+def get_student_staff_or_nohogwarts() :
+     results = list(mongo.characters.aggregate([
+           {
+                "$project": {
+                     "role": {
+                          "$switch": {
+                               "branches": [
+                                    { "case": { "$eq": ["$hogwartsStudent", True] }, "then": "student" },
+                                    { "case": { "$eq": ["$hogwartsStaff", True] }, "then": "staff" }
+                                    ],
+                                    "default": "none"
+                                    }
+                               }
+                              } 
+           },
+           {
+                "$group": {
+                     "_id": "$role",
+                     "count": { "$sum": 1 }
+                          }
+           }
+     ]))
+     if results:
+          return jsonify(results), 200
+     else:
+          return jsonify({'error': "calcul impossible"}), 404
 
      
