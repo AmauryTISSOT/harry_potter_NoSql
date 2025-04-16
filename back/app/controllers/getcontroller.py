@@ -256,3 +256,24 @@ def get_avg_wand_size_by_gender() :
           return jsonify(results), 200
      else:
           return jsonify({'error': "calcul impossible"}), 404
+     
+
+def get_avg_wand_size_per_house():
+     results = list(mongo.characters.aggregate([
+          {"$unwind" : "$wand"},
+    {"$match" : {"$and" : [
+        {"wizard" : True},
+        {"wand.length" : {"$ne" : ""}},
+        {"wand.length" : {"$ne" : None}},
+        {"house" : {"$ne" : ""}}
+    ]}},
+    {"$group" : {
+        '_id' : "$house",
+        "average" : {"$avg" : "$wand.length"}
+    }},
+    {"$sort" : {"average" : -1}}
+     ]))
+     if results:
+          return jsonify(results), 200
+     else:
+          return jsonify({'error': "calcul impossible"}), 404
