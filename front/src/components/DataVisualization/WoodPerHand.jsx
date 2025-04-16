@@ -38,7 +38,7 @@ const WoodPerHand = () => {
                 flexDirection: "column",
             }}
         >
-            <h3>Répartion du type de bois des baguettes</h3>
+            <h3>Répartition du type de bois des baguettes</h3>
             <ResponsiveContainer width="100%" height={400}>
                 <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
                     <PolarGrid />
