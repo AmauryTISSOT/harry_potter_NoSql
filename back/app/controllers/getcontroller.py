@@ -60,3 +60,120 @@ def get_nb_core_per_wand():
           return jsonify(results), 200
      else:
           return jsonify({'error': "calcul impossible"}), 404
+
+def get_nb_characters_in_movies() : 
+     results = list(mongo.characters.aggregate([
+        {
+        "$group" : {
+            "_id" : {"in movie ?" : {"$ne" : ["$actor", ""]}},
+            "count" : {"$sum" : 1}
+        }
+    }  
+     ]))
+     if results:
+          return jsonify(results), 200
+     else:
+          return jsonify({'error': "calcul impossible"}), 404
+     
+
+def get_student_staff_or_nohogwarts() :
+     results = list(mongo.characters.aggregate([
+           {
+                "$project": {
+                     "role": {
+                          "$switch": {
+                               "branches": [
+                                    { "case": { "$eq": ["$hogwartsStudent", True] }, "then": "student" },
+                                    { "case": { "$eq": ["$hogwartsStaff", True] }, "then": "staff" }
+                                    ],
+                                    "default": "none"
+                                    }
+                               }
+                              } 
+           },
+           {
+                "$group": {
+                     "_id": "$role",
+                     "count": { "$sum": 1 }
+                          }
+           }
+     ]))
+     if results:
+          return jsonify(results), 200
+     else:
+          return jsonify({'error': "calcul impossible"}), 404
+     
+def get_gender_in_hogwarts():
+     results = list(mongo.characters.aggregate([
+          {"$match" : {'$and' : [
+               {"hogwartsStudent": True},
+               {"house": {"$ne": ""}}
+               ]}},
+               {"$project": {
+                    "gender": {
+                         "$switch" : {
+                              "branches" : [
+                                   {"case" : {"$eq" : ["$gender", "male"]}, "then" : "male"},
+                                   {"case" : {"$eq" : ["$gender", "female"]}, "then" : "female"},
+                                   ],
+                                   "default": "non connu"
+                                   }
+                                   }
+                                   }
+                                   },
+                                   {"$group" : {"_id" : "$gender", "nb" : {"$sum" : 1 }}}
+                                   ]))
+     if results:
+          return jsonify(results), 200
+     else:
+          return jsonify({'error': "calcul impossible"}), 404
+
+
+def get_gender_per_house() :
+     results = list(mongo.characters.aggregate([
+          {"$match" : { "$and" : [
+               {"hogwartsStudent" : True},
+               {"house" : {"$ne" : ""}}
+          ]}},
+          {"$project" : {
+               "house" : 1,
+               "gender" : 1
+          }},
+          {"$group" : {"_id" : {"house" : "$house", "gender" : "$gender"}, "number" : {"$sum" : 1}}}
+
+     ]))
+     if results:
+          return jsonify(results), 200
+     else:
+          return jsonify({'error': "calcul impossible"}), 404
+
+def get_ancestry_in_hogwarts() : 
+     results = list(mongo.characters.aggregate([
+          {"$match" : { "$and" : [
+               {"hogwartsStudent" : True},
+               {"ancestry" : {"$ne" : ""}}
+          ]}},
+          {"$group" : {"_id" : "$ancestry", "number" : {"$sum" : 1}}}
+     ]))
+     if results:
+          return jsonify(results), 200
+     else:
+          return jsonify({'error': "calcul impossible"}), 404
+     
+def get_ancestry_in_each_house() : 
+     results = list(mongo.characters.aggregate([
+          {"$match" : { "$and" : [
+               {"hogwartsStudent" : True},
+               {"ancestry" : {"$ne" : ""}}
+          ]}},
+          {"$project" : {
+               "house" : 1,
+               "ancestry" : 1
+          }},
+          {"$group" : {"_id" : {"house" : "$house", "ancestry" : "$ancestry"}, "number" : {"$sum" : 1}}}
+     ]))
+     if results:
+          return jsonify(results), 200
+     else:
+          return jsonify({'error': "calcul impossible"}), 404
+     
