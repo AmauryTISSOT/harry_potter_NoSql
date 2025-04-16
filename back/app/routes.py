@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from . import mongo
-from .controllers.getcontroller import (get_character_by_id, get_nb_student_per_house,get_nb_characters_per_species,get_nb_wood_per_wand,get_nb_core_per_wand,get_nb_characters_in_movies, get_student_staff_or_nohogwarts, get_gender_in_hogwarts, get_gender_per_house, get_ancestry_in_hogwarts,get_ancestry_in_each_house, get_alive_or_dead)
+from .controllers.getcontroller import (get_character_by_id, get_nb_student_per_house,get_nb_characters_per_species,get_nb_wood_per_wand,get_nb_core_per_wand,get_nb_characters_in_movies, get_student_staff_or_nohogwarts, get_gender_in_hogwarts, get_gender_per_house, get_ancestry_in_hogwarts,get_ancestry_in_each_house, get_alive_or_dead, get_nb_of_patronus, get_wand_size, get_avg_wand_size_by_gender)
 
 main = Blueprint('main', __name__)
 
@@ -60,3 +60,16 @@ def route_get_ancestry_in_each_house():
 @main.route('/aliveordead', methods=['GET'])
 def route_get_alive_or_dead():
     return get_alive_or_dead()
+
+@main.route('/nbofpatronus', methods=['GET'])
+def route_get_nb_of_patronus():
+    return get_nb_of_patronus()
+
+
+@main.route('/wandsize', methods=['GET'])
+def route_get_wand_size():
+    return get_wand_size()
+
+@main.route('/wandsizepergender', methods=['GET'])
+def route_get_avg_wand_size_by_gender():
+    return get_avg_wand_size_by_gender()

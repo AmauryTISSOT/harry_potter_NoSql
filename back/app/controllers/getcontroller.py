@@ -205,3 +205,54 @@ def get_alive_or_dead() :
           return jsonify(results), 200
      else:
           return jsonify({'error': "calcul impossible"}), 404
+     
+def get_nb_of_patronus() :
+     results = list(mongo.characters.aggregate([
+     {"$match" : { "$and" : [
+               {"wizard" : True},
+               {"patronus" : {"$ne" : ""}}
+          ]}},
+    {"$group" : {"_id" : "$patronus", "nb" : {"$sum" : 1}}},
+    { "$sort": { "nb": -1}}
+     ]))
+     if results:
+          return jsonify(results), 200
+     else:
+          return jsonify({'error': "calcul impossible"}), 404
+
+
+
+def get_wand_size() : 
+     results = list(mongo.characters.aggregate([
+          {"$unwind" : "$wand"},
+    {"$match" : { "$and" : [
+        {"wizard" : True},
+        {"wand.length" : {"$ne" : ""}},
+        {"wand.length" : {"$ne" : None}},
+    ]}},
+    {"$group" : {"_id" : "$wand.length", "nb" : {"$sum" : 1}}},
+    { "$sort": { "nb": -1}}
+     ]))
+     if results:
+          return jsonify(results), 200
+     else:
+          return jsonify({'error': "calcul impossible"}), 404
+     
+def get_avg_wand_size_by_gender() : 
+     results = list(mongo.characters.aggregate([
+          {"$unwind" : "$wand"},
+    {"$match" : { "$and" : [
+        {"wizard" : True},
+        {"wand.length" : {"$ne" : ""}},
+        {"wand.length" : {"$ne" : None}},
+    ]}},
+    {"$group" : {
+        "_id" : "$gender",
+        "average" : {"$avg" : "$wand.length"}
+    }},
+    {"$sort" : {"average" : -1}}
+     ]))
+     if results:
+          return jsonify(results), 200
+     else:
+          return jsonify({'error': "calcul impossible"}), 404
