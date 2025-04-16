@@ -58,7 +58,7 @@ const DeathByGender = () => {
                 flexDirection: "column",
             }}
         >
-            <h3>Statut de vie des personnages</h3>
+            <h3>Répartition du statut des personnages selon le genre</h3>
             <ResponsiveContainer width="100%" height={450}>
                 <BarChart
                     data={data}
