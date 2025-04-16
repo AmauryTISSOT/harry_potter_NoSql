@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 const Header = () => {
     return (
         <div className={styles.headerContainer}>
-            <h3>Harry Potter Character Data Analysis</h3>
+            <h2>Harry Potter Character Data Analysis</h2>
         </div>
     );
 };
