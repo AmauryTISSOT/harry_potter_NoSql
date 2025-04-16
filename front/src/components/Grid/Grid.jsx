@@ -5,7 +5,7 @@ import StudentPerHouse from "../DataVisualization/StudentPerHouse";
 import CharactersPerSpecies from "../DataVisualization/CharactersPerSpecies";
 import WoodPerHand from "../DataVisualization/WoodPerHand";
 import CorePerHand from "../DataVisualization/CorePerHand";
-import FakeChart from "../FakeChart/FakeChart";
+import ActorOrNot from "../DataVisualization/ActorOrNot";
 
 export const Grid = () => {
     return (
@@ -23,7 +23,7 @@ export const Grid = () => {
                 <GridItem item={<CorePerHand />} />
             </div>
             <div style={{ gridColumnStart: 3, gridColumnEnd: 5 }}>
-                <GridItem item={<FakeChart />} />
+                <GridItem item={<ActorOrNot />} />
             </div>
         </div>
     );

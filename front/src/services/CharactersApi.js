@@ -19,6 +19,27 @@ const CharactersApi = {
     coreperwand: async () => {
         return await axios.get(`${API_BASE_URL}/coreperwand`);
     },
+    actorsornot: async () => {
+        return await axios.get(`${API_BASE_URL}/actorsornot`);
+    },
+    stafforstudent: async () => {
+        return await axios.get(`${API_BASE_URL}/stafforstudent`);
+    },
+    genderinhogwards: async () => {
+        return await axios.get(`${API_BASE_URL}/genderinhogwards`);
+    },
+    genderperhouse: async () => {
+        return await axios.get(`${API_BASE_URL}/genderperhouse`);
+    },
+    ancestryinhogwards: async () => {
+        return await axios.get(`${API_BASE_URL}/ancestryinhogwards`);
+    },
+    ancestryineachhouse: async () => {
+        return await axios.get(`${API_BASE_URL}/ancestryineachhouse`);
+    },
+    aliveordead: async () => {
+        return await axios.get(`${API_BASE_URL}/aliveordead`);
+    },
 };
 
 export default CharactersApi;
