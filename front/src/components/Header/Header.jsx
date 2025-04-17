@@ -9,6 +9,7 @@ const Header = () => {
             <nav className={styles.navBar}>
                 <Link to="/">Accueil</Link>
                 <Link to="/showAllCharacters">Afficher les personnages</Link>
+                <Link to="/addNewCharacter">Créer un personnage</Link>
             </nav>
         </div>
     );
