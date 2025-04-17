@@ -3,6 +3,7 @@ import "./App.css";
 import Layout from "./layout/Layout.jsx";
 import Home from "./pages/Home/Home";
 import ShowAllCharacters from "./pages/ShowAllCharacters/ShowAllCharacters.jsx";
+import AddNewCharacter from "./pages/AddNewCharacter/AddNewCharacter.jsx";
 
 function App() {
     return (
@@ -13,6 +14,10 @@ function App() {
                     <Route
                         path="/showAllCharacters"
                         element={<ShowAllCharacters />}
+                    />
+                    <Route
+                        path="/addNewCharacter"
+                        element={<AddNewCharacter />}
                     />
                 </Route>
             </Routes>
