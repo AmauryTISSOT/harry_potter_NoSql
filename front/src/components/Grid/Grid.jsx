@@ -19,6 +19,7 @@ import WandSizePerHouse from "../DataVisualization/WandSizePerHouse";
 import DeathByGender from "../DataVisualization/DeathByGender";
 import WizardVsMuggle from "../DataVisualization/WizardVsMuggle";
 import ApparitionsTotal from "../DataVisualization/ApparitionsTotal";
+import Apparitionhpinmovies from "../DataVisualization/Apparitionhpinmovies";
 
 export const Grid = () => {
     return (
@@ -76,6 +77,9 @@ export const Grid = () => {
             </div>
             <div style={{ gridColumnStart: 1, gridColumnEnd: 5 }}>
                 <GridItem item={<ApparitionsTotal />} />
+            </div>
+            <div style={{ gridColumnStart: 1, gridColumnEnd: 5 }}>
+                <GridItem item={<Apparitionhpinmovies />} />
             </div>
         </div>
     );
