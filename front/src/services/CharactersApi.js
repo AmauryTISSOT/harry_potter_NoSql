@@ -7,6 +7,9 @@ const CharactersApi = {
     getAllCharacters: async () => {
         return await axios.get(`${API_BASE_URL}/characters`);
     },
+    createNewCharacter: async (character) => {
+        return await axios.post(`${API_BASE_URL}/characters`, character);
+    },
     stundentperhouse: async () => {
         return await axios.get(`${API_BASE_URL}/studentperhouse`);
     },
