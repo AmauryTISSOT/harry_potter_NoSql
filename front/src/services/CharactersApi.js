@@ -64,6 +64,9 @@ const CharactersApi = {
     apparitionstotal: async () => {
         return await axios.get(`${API_BASE_URL}/apparitionstotal`);
     },
+    apparitionhpinmovies: async () => {
+        return await axios.get(`${API_BASE_URL}/apparitionhpinmovies`);
+    },
 };
 
 export default CharactersApi;
