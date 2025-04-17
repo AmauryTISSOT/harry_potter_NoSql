@@ -401,3 +401,46 @@ def get_apparaition_movie_eight() :
      else:
           return jsonify({'error': "calcul impossible"}), 404
      
+def get_hp_in_each_movie() :
+     results = list(mongo.dialogs.aggregate([
+           {"$match" : {"character" : {"$eq" : "Harry Potter"}}},
+    {
+        "$facet": {
+            "apparitions": [
+                {
+                    "$group": {
+                        "_id": "$movie",
+                        "apparitions": {"$sum": 1}
+                    }
+                }
+            ],
+            "total": [
+                {
+                    "$group": {
+                        "_id": None,
+                        "total": {"$sum": 1}
+                    }
+                }
+            ]
+        }
+    },
+    {"$unwind": "$apparitions"},
+    {"$unwind": "$total"},
+    {
+        "$project": {
+            "movie": "$apparitions._id",
+            "apparitions": "$apparitions.apparitions",
+            "percentage": {
+                "$multiply": [
+                    {"$divide": ["$apparitions.apparitions", "$total.total"]},
+                    100
+                ]
+            }
+        }
+    },
+    {"$sort": {"apparitions": -1}}
+     ]))
+     if results:
+          return jsonify(results), 200
+     else:
+          return jsonify({'error': "calcul impossible"}), 404
