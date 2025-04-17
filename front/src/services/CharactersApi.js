@@ -61,6 +61,9 @@ const CharactersApi = {
     wizardvsmuggle: async () => {
         return await axios.get(`${API_BASE_URL}/wizardvsmuggle`);
     },
+    apparitionstotal: async () => {
+        return await axios.get(`${API_BASE_URL}/apparitionstotal`);
+    },
 };
 
 export default CharactersApi;
